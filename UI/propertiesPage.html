@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-md-6">
+		<div class="content-box-large">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Property</th>
+						<th>Value</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat = "(propertyType, propertyValue) in properties">
+					<tr>
+						<td>{{$index+1}}</td>
+						<td>{{propertyType}}</td>
+						<td><input type="text" ng-model="properties[propertyType]"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="content-box-large">
+			<div class="panel-body">
+				<h4>Save Changes</h4>
+				<button class="btn btn-primary" ng-click="saveProperties()">Save Changes</button> 
+			</div>
+		</div>
+	</div>
+</div>

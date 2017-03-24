@@ -1,0 +1,56 @@
+angular.module('homePageApp', ['userDataModelApp'])
+.controller('HomePageController', function HomePageController($scope, $http, userDataModel) {
+
+	vm = $scope;
+	vm.myShares = userDataModel.myShares;
+	vm.allShares = userDataModel.allShares;
+	vm.commonMap = userDataModel.commonMap;
+	
+	var url = "http://localhost:8888/runCommand";
+	
+	function getLastUpdatedDate(){
+		var data = {
+		'command' : "getLastUpdatedDate",
+		'argumentsList' : []
+		}
+		$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+		$http({
+			url: url,
+			method: "POST",
+			data: JSON.stringify(data)
+		})
+		.then(function(response) {
+			vm.commonMap.lastUpdatedDate = response.data['success'];
+			console.log(response.data['success']);
+			hidePreloader();
+		});
+	}
+	
+	if(vm.commonMap.lastUpdatedDate == "")
+		getLastUpdatedDate();
+	
+	vm.dailyUpdate = function(){
+		showPreloader();
+		var date = new Date(vm.commonMap.lastUpdatedDate);
+		var yyyy = date.getFullYear();
+		var mm = date.getMonth() < 9 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+		var dd  = (date.getDate() + 1) < 10 ? "0" + (date.getDate() + 1) : (date.getDate() + 1);
+		
+		var date = dd + '/' + mm + '/' + yyyy;
+		var data = {
+		'command' : "dateIteration",
+		'argumentsList' : [date]
+		}
+		$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+		$http({
+			url: url,
+			method: "POST",
+			data: JSON.stringify(data)
+		})
+		.then(function(response) {
+			console.log(response.data['success']);
+			getLastUpdatedDate();
+		});
+	}
+	
+});
