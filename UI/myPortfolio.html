@@ -1,0 +1,61 @@
+<div class="row"  ng-app="tradingSoftApp">
+	<div class="col-md-6">
+		<div class="content-box-large" style="overflow: auto; height: 80vh;">
+			<div class="panel-body">
+				<h4>MyShares</h4>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Stock</th>
+							<th>Remove</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="share in myShares">
+						<tr>
+							<td>{{$index+1}}</td>
+							<td>{{share}}</td>
+							<td><button type="button" data-ng-click="removeRow($index)">-</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content-box-large">
+					<div class="panel-body">
+						<h4>Add Shares to MyShares</h4>
+						<div class="dropdown dropdown-scroll">
+							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu0" data-toggle="dropdown">Select Share<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu0">
+								<li role="presentation">
+									<div class="input-group input-group-sm search-control"> 
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-search"></span>
+										</span>
+										<input type="text" class="form-control" placeholder="Name" ng-model="query"></input>
+									</div>
+								</li>
+								<li role="presentation" ng-repeat='share in allShares | filter:query'>
+									<a ng-click="addShare(share)"> {{share}} </a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="content-box-large">
+					<div class="panel-body">
+						<h4>Save Changes</h4>
+						<button class="btn btn-primary" ng-click="saveMyPortfolioChanges()">Save Changes</button> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

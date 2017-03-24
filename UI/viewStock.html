@@ -1,0 +1,339 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="content-box-large">
+			<div class="panel-body">
+				<!--<div id="loader-wrapper" class="anychart-loader">
+					<div class="rotating-cover">
+						<div class="rotating-plane">
+							<div class="chart-row"><span class="chart-col green"></span><span class="chart-col orange"></span><span class="chart-col red"></span></div>
+						</div>
+					</div>
+				</div>-->
+				<div class="toolbar">
+					<div class="btn-group-container">
+						<div class="btn-group">
+							<button type="button" class="btn btn-default color-picker" data-color="fill" data-toggle="tooltip"
+									title="?hoose drawing fill color"><span
+									class="color-fill-icon dropdown-color-fill-icon" style="background-color:#e06666;"></span>&nbsp;<b
+									class="caret"></b>
+							</button>
+
+							<button type="button" class="btn btn-default color-picker" data-color="stroke" data-toggle="tooltip"
+									title="?hoose drawing stroke color"><span
+									class="color-fill-icon dropdown-color-fill-icon" style="background-color:#e06666;"></span>&nbsp;<b
+									class="caret"></b>
+							</button>
+
+							<select class="selectpicker show-menu-arrow" id="select-stroke-settings"
+									title="Stroke settings"
+									data-style="btn-lg" data-width="121" multiple>
+								<optgroup label="Stroke width" data-max-options="1">
+									<option data-settings="width" value="1">1 px</option>
+									<option data-settings="width" value="2">2 px</option>
+									<option data-settings="width" value="3">3 px</option>
+									<option data-settings="width" value="4">4 px</option>
+									<option data-settings="width" value="5">5 px</option>
+								</optgroup>
+								<optgroup label="Stroke dash" data-max-options="1">
+									<option value="6" data-settings="type">solid</option>
+									<option value="7" data-settings="type">dotted</option>
+									<option value="8" data-settings="type">dashed</option>
+								</optgroup>
+							</select>
+						</div>
+						<div class="btn-group">
+							<button type="button" data-action-type="unSelectedAnnotation" class="btn btn-default"
+									aria-label="Center Align" data-toggle="tooltip" title="Cursor">
+								<i class="ac ac-mouse-pointer" aria-hidden="true"></i>
+							</button>
+						</div>
+					</div>
+
+					<div class="select-container">
+						<select class="selectpicker show-menu-arrow choose-drawing-tools"
+								title="Drawing tools"
+								data-style="btn-lg" data-width="133" data-max-options="1">
+							<optgroup label="Lines, Trend lines and Rays:">
+								<option data-icon="ac ac-line" data-annotation-type="line">Line Segment</option>
+								<option data-icon="ac ac-horizontal-line" data-annotation-type="horizontalLine">Horizontal Line</option>
+								<option data-icon="ac ac-vertical-line" data-annotation-type="verticalLine">Vertical Line</option>
+								<option data-icon="ac ac-infinite-line" data-annotation-type="infiniteLine">Infinite Line</option>
+								<option data-icon="ac ac-ray" data-annotation-type="ray">Ray</option>
+							</optgroup>
+							<optgroup label="Geometric shapes:">
+								<option data-icon="ac ac-triangle" data-annotation-type="triangle">Triangle</option>
+								<option data-icon="ac ac-rectangle" data-annotation-type="rectangle">Rectangle</option>
+								<option data-icon="ac ac-ellipse" data-annotation-type="ellipse">Ellipse</option>
+							</optgroup>
+							<optgroup label="Other tools:">
+								<option data-icon="ac ac-trend-channel" data-annotation-type="trendChannel">Trend Channel</option>
+								<option data-icon="ac ac-andrews-pitchfork" data-annotation-type="andrewsPitchfork">Andrew's Pitchfork</option>
+							</optgroup>
+							<optgroup label="Fibonacci tools:">
+								<option data-icon="ac ac-fibonacci-fan" data-annotation-type="fibonacciFan">Fibonacci Fan</option>
+								<option data-icon="ac ac-fibonacci-arc" data-annotation-type="fibonacciArc">Fibonacci Arc</option>
+								<option data-icon="ac ac-fibonacci-retracement" data-annotation-type="fibonacciRetracement">Fibonacci Retracement</option>
+								<option data-icon="ac ac-fibonacci-timezones" data-annotation-type="fibonacciTimezones">Fibonacci Time Zones</option>
+							</optgroup>
+						</select>
+					</div>
+
+					<div class="btn-group hidden-xs">
+						<button data-annotation-type="line" type="button" class="btn btn-default" aria-label="Center Align"
+								data-toggle="tooltip" title="Line Segment">
+							<i class="ac ac-line" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="horizontalLine" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Horizontal Line">
+							<i class="ac ac-horizontal-line" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="verticalLine" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Vertical Line">
+							<i class="ac ac-vertical-line" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="infiniteLine" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Infinite Line">
+							<i class="ac ac-infinite-line" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="ray" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Ray">
+							<i class="ac ac-ray" aria-hidden="true"></i>
+						</button>
+					</div>
+
+					<div class="btn-group hidden-xs">
+						<button data-annotation-type="triangle" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Triangle">
+							<i class="ac ac-triangle" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="rectangle" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Rectangle">
+							<i class="ac ac-rectangle" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="ellipse" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Ellipse">
+							<i class="ac ac-ellipse" aria-hidden="true"></i>
+						</button>
+					</div>
+
+					<div class="btn-group hidden-xs">
+						<button data-annotation-type="trendChannel" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Trend Channel">
+							<i class="ac ac-trend-channel" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="andrewsPitchfork" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Andrew's Pitchfork">
+							<i class="ac ac-andrews-pitchfork" aria-hidden="true"></i>
+						</button>
+					</div>
+
+					<div class="btn-group hidden-xs">
+						<button data-annotation-type="fibonacciFan" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Fibonacci Fan">
+							<i class="ac ac-fibonacci-fan" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="fibonacciArc" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Fibonacci Arc">
+							<i class="ac ac-fibonacci-arc" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="fibonacciRetracement" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Fibonacci Retracement">
+							<i class="ac ac-fibonacci-retracement" aria-hidden="true"></i>
+						</button>
+						<button data-annotation-type="fibonacciTimezones" type="button" class="btn btn-default"
+								aria-label="Center Align" data-toggle="tooltip" title="Fibonacci Time Zones">
+							<i class="ac ac-fibonacci-timezones" aria-hidden="true"></i>
+						</button>
+
+					</div>
+
+					<div class="btn-group-container">
+						<div class="btn-group">
+							<select class="selectpicker show-menu-arrow select choose-marker" id="select-marker-type"
+									title="Marker"
+									data-style="btn-lg" data-width="90" data-max-options="1">
+								<option data-icon="ac ac-arrow-up-square" data-annotation-type="marker" data-marker-type="arrowUp"
+										data-marker-anchor="top">Up Arrow
+								</option>
+								<option data-icon="ac ac-arrow-down-square" data-annotation-type="marker"
+										data-marker-type="arrowDown" data-marker-anchor="bottom">Down Arrow
+								</option>
+								<option data-icon="ac ac-arrow-left-square" data-annotation-type="marker"
+										data-marker-type="arrowLeft" data-marker-anchor="left">Left Arrow
+								</option>
+								<option data-icon="ac ac-arrow-right-square" data-annotation-type="marker"
+										data-marker-type="arrowRight" data-marker-anchor="right">Right Arrow
+								</option>
+								<option data-icon="ac ac-head-arrow" data-annotation-type="marker" data-marker-type="arrowHead"
+										data-marker-anchor="right">Head Arrow
+								</option>
+								<option data-icon="ac ac-cross" data-annotation-type="marker" data-marker-type="cross"
+										data-marker-anchor="center">Cross
+								</option>
+								<option data-icon="ac ac-diagonal-cros" data-annotation-type="marker" data-marker-type="diagonalCross"
+										data-marker-anchor="center">Diagonal cross
+								</option>
+								<option data-icon="ac ac-diamond" data-annotation-type="marker" data-marker-type="diamond"
+										data-marker-anchor="center">Diamond
+								</option>
+								<option data-icon="ac ac-pentagon" data-annotation-type="marker" data-marker-type="pentagon"
+										data-marker-anchor="center">Pentagon
+								</option>
+								<option data-icon="ac ac-square" data-annotation-type="marker" data-marker-type="square"
+										data-marker-anchor="center">Square
+								</option>
+								<option data-icon="ac ac-star-1" data-annotation-type="marker" data-marker-type="star10"
+										data-marker-anchor="center">Star 1
+								</option>
+								<option data-icon="ac ac-star-2" data-annotation-type="marker" data-marker-type="star4"
+										data-marker-anchor="center">Star 2
+								</option>
+								<option data-icon="ac ac-star-3" data-annotation-type="marker" data-marker-type="star5"
+										data-marker-anchor="center">Star 3
+								</option>
+								<option data-icon="ac ac-star-4" data-annotation-type="marker" data-marker-type="star6"
+										data-marker-anchor="center">Star 4
+								</option>
+								<option data-icon="ac ac-star-5" data-annotation-type="marker" data-marker-type="star7"
+										data-marker-anchor="center">Star 5
+								</option>
+								<option data-icon="ac ac-trapezium" data-annotation-type="marker" data-marker-type="trapezium"
+										data-marker-anchor="center">Trapezium
+								</option>
+								<option data-icon="ac ac-triangle-up" data-annotation-type="marker" data-marker-type="triangleUp"
+										data-marker-anchor="top">Triangle Up
+								</option>
+								<option data-icon="ac ac-triangle-down" data-annotation-type="marker" data-marker-type="triangleDown"
+										data-marker-anchor="bottom">Triangle Down
+								</option>
+								<option data-icon="ac ac-triangle-left" data-annotation-type="marker" data-marker-type="triangleLeft"
+										data-marker-anchor="left">Triangle Left
+								</option>
+								<option data-icon="ac ac-triangle-right" data-annotation-type="marker" data-marker-type="triangleRight"
+										data-marker-anchor="right">Triangle Right
+								</option>
+							</select>
+							<select class="selectpicker show-menu-arrow select select-marker-size" id="select-marker-size"
+									title="Marker size"
+									data-style="btn-lg" data-width="80" data-max-options="1">
+								<option data-settings="width" value="5">5 px</option>
+								<option data-settings="width" value="10">10 px</option>
+								<option data-settings="width" value="15">15 px</option>
+								<option data-settings="width" value="20" selected>20 px</option>
+								<option data-settings="width" value="25">25 px</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="btn-group-container">
+						<div class="btn-group">
+							<button data-action-type="removeSelectedAnnotation" type="button" class="btn btn-default"
+									aria-label="Center Align" data-toggle="tooltip" title="Delete selected drawing">
+								<i class="ac ac-remove-thin" aria-hidden="true"></i>
+							</button>
+							<button data-action-type="removeAllAnnotations" type="button" class="btn btn-default"
+									aria-label="Center Align" data-toggle="tooltip" title="Delete all drawings">Remove All
+							</button>
+						</div>
+					</div>
+					
+					<div class="btn-group-container">
+						<div class="btn-group">
+							<div class="dropdown dropdown-scroll">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown">Overlay <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+									<li role="presentation" ng-repeat='(overlayKey, overlayValue) in overlayMap'>
+										<a ng-click="selectOverlay(overlayKey)"> {{overlayKey}} <span class="glyphicon glyphicon-ok" ng-if="overlayValue.selected" style="float:right"></span></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="btn-group-container">
+						<div class="btn-group">
+							<div class="dropdown dropdown-scroll">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">All Shares:{{commonMap.selectedShare}} <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+									<li role="presentation">
+										<div class="input-group input-group-sm search-control"> 
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-search"></span>
+											</span>
+											<input type="text" class="form-control" placeholder="Name" ng-model="query"></input>
+										</div>
+									</li>
+									<li role="presentation" ng-repeat='share in allShares | filter:query'>
+										<a ng-click="selectShare(share)"> {{share}} </a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="btn-group-container">
+						<div class="btn-group">
+							<div class="dropdown dropdown-scroll">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">HighPoints <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+									<li role="presentation">
+										<div class="input-group input-group-sm search-control"> 
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-search"></span>
+											</span>
+											<input type="text" class="form-control" placeholder="Name" ng-model="query"></input>
+										</div>
+									</li>
+									<li role="presentation" ng-repeat='share in indicators.highPoints | filter:query'>
+										<a ng-click="selectShare(share.ticker)"> {{share.ticker}} </a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="btn-group-container">
+						<div class="btn-group">
+							<div class="dropdown dropdown-scroll">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown">LowPoints <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+									<li role="presentation">
+										<div class="input-group input-group-sm search-control"> 
+											<span class="input-group-addon">
+												<span class="glyphicon glyphicon-search"></span>
+											</span>
+											<input type="text" class="form-control" placeholder="Name" ng-model="query"></input>
+										</div>
+									</li>
+									<li role="presentation" ng-repeat='share in indicators.lowPoints | filter:query'>
+										<a ng-click="selectShare(share.ticker)"> {{share.ticker}} </a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="btn-group-container">
+						<div class="btn-group">
+							<button type="button" ng-click="getPoints()" class="btn btn-default" aria-label="Center Align" data-toggle="tooltip" title="Update Indicators">Indicators
+							</button>
+						</div>
+					</div>
+					
+					<div class="btn-group-container">
+						<div class="btn-group">
+							<button type="button" ng-click="saveAnnotations()" class="btn btn-default" aria-label="Center Align" data-toggle="tooltip" title="Save Annotations">Save
+							</button>
+						</div>
+					</div>
+					
+				</div>
+				<div id="chart-container" style="position:relative; height:500px; padding-bottom:10px"></div>
+			</div>
+		</div>
+	</div>
+</div>
