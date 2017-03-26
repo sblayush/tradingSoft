@@ -1,9 +1,8 @@
 from downloadEodData import downloadEodData
 from readWriteData import writeData
 import os
-import datetime
 
-def updateCSV(Date):
+def updateStocksCSV(Date):
 	try:
 		df = downloadEodData(Date)
 		for symbol in df.index:
@@ -18,6 +17,4 @@ def updateCSV(Date):
 		
 	except Exception as e:
 		print('Data for ' + Date.strftime('%d-%b-%y') + ' does not exists!')
-#Date = datetime.datetime.now()
-#Date2 = datetime.date(2016,01,19)	
-#updateCSV(Date2)
+		

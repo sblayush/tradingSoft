@@ -38,7 +38,7 @@ angular.module('homePageApp', ['userDataModelApp'])
 		
 		var date = dd + '/' + mm + '/' + yyyy;
 		var data = {
-		'command' : "dateIteration",
+		'command' : "dailyUpdate",
 		'argumentsList' : [date]
 		}
 		$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -50,6 +50,42 @@ angular.module('homePageApp', ['userDataModelApp'])
 		.then(function(response) {
 			console.log(response.data['success']);
 			getLastUpdatedDate();
+		});
+	}
+	
+	vm.removeDuplicates = function(){
+		showPreloader();
+		var data = {
+		'command' : "removeDuplicates",
+		'argumentsList' : []
+		}
+		$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+		$http({
+			url: url,
+			method: "POST",
+			data: JSON.stringify(data)
+		})
+		.then(function(response) {
+			console.log(response.data['success']);
+			hidePreloader();
+		});
+	}
+	
+	vm.sortData = function(){
+		showPreloader();
+		var data = {
+		'command' : "sortData",
+		'argumentsList' : []
+		}
+		$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+		$http({
+			url: url,
+			method: "POST",
+			data: JSON.stringify(data)
+		})
+		.then(function(response) {
+			console.log(response.data['success']);
+			hidePreloader();
 		});
 	}
 	

@@ -88,10 +88,10 @@ angular.module('viewStockApp', ['userDataModelApp'])
 		}
 	}
 	
-	vm.getPoints = function(){
+	vm.findPoints = function(){
 		showPreloader();
 		var data = {
-		'command' : "getPoints",
+		'command' : "findPoints",
 		'argumentsList' : []
 		}
 		$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -130,7 +130,7 @@ angular.module('viewStockApp', ['userDataModelApp'])
 	
 	if(Object.keys(vm.indicators).length == 0)
 	{
-		vm.getPoints();
+		vm.findPoints();
 	}
 	
 	vm.selectShare = function(shareName){
@@ -165,6 +165,7 @@ angular.module('viewStockApp', ['userDataModelApp'])
 		series.legendItem().iconType('risingfalling');
 		
 		annotation.fromJson(data['annotations']);
+		
 	}
 	
 	function plotEmptyGraph(){
@@ -186,11 +187,14 @@ angular.module('viewStockApp', ['userDataModelApp'])
 				$(this).removeClass('open');
 			})
 		});
+		
 		chart.listen('chartDraw', function () {
 			hidePreloader();
 		});
+		
 		chart.container("chart-container");
 		chart.draw();
+		
 	}
 	
 	function createPageColorPicker() {
@@ -443,7 +447,6 @@ angular.module('viewStockApp', ['userDataModelApp'])
 	}
 
 	$(document).ready(function () {
-
 		$('select.choose-drawing-tools').on('change', changeAnnotations);
 		$('select.choose-marker').on('change', changeAnnotations);
 		$('[data-annotation-type]').on('click', changeAnnotations);

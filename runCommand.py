@@ -1,4 +1,4 @@
-from dateIteration import dateIteration
+from dailyUpdate import dailyUpdate
 from sortData import sortData
 from removeDuplicates import removeDuplicates
 from divideData import divideData
@@ -13,8 +13,8 @@ from saveAnnotations import saveAnnotations
 def runCommand(command, argumentsList):
 	try:
 		commandMap = {
-			'dateIteration' : dateIteration,
-			'getPoints' : findPoints,
+			'dailyUpdate' : dailyUpdate,
+			'findPoints' : findPoints,
 			'sortData' : sortData,
 			'removeDuplicates' : removeDuplicates,
 			'divideData' : divideData,

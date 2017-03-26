@@ -6,15 +6,20 @@ def removeDuplicates():
 		full_path = os.path.realpath(__file__)
 		direc = os.path.dirname(full_path) + '\Shares'
 		l = os.listdir(direc)
+		successFiles = []
 		for file in l:
 			df = importRawDataFromCSV(file)
 			df = df.reset_index().drop_duplicates(subset='Date', keep = 'first').set_index('Date')
 			stockFile = os.path.dirname(full_path) + '\Shares\\' + file
 			df.to_csv(stockFile, header = False)
-			print('Done ' + file)
-		print('Operation Successful!')
+			successFiles.append(file)
+		print(successFiles)
+		return "Remove duplicates successful"
 		
 	except Exception as e:
-		print('Error in removeDuplicates: ' + str(e))
+		errorString = 'Error in removeDuplicates: ' + str(e)
+		print(errorString)
+		return errorString
 	
-#removeDuplicates()
+if __name__ == "__main__":
+	removeDuplicates()

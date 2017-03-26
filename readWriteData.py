@@ -14,19 +14,19 @@ def writeData(dataPath, data, shouldAppend=True):
 	except Exception as e:
 		print('Error in Write Data: ' + str(e))
 	
+	
 def readData(dataPath):
 	try:
-		global stocks
 		full_path = os.path.realpath(__file__)
 		stockFile = os.path.dirname(full_path) + dataPath
 		saveFile = open(stockFile,'r')
-		stocks = saveFile.read()
-		stocks = stocks.split('\n')
-		stocks = stocks[:-1]
+		data = saveFile.read()
 		saveFile.close()
-		
-		return stocks
+		return data
 		
 	except Exception as e:
 		print('Error in Read Data: ' + str(e))
 		
+		
+if __name__ == "__main__":
+	print(readData('\\stocks\\myPortfolioStocks.txt'))
