@@ -1,9 +1,9 @@
-from readWriteData import readData
-from update import update
+from getSharesList import getSharesList
+from updateFunctions import updateIndicators
 
 def findPoints():
 	try:
-		stocks = readData('\\stocks\\myPortfolioStocks.txt')
+		stocks = getSharesList('myPortfolioStocks.txt')
 		indicatorsObject = {
 			'SMAPoints' : [],
 			'ADLPoints' : [],
@@ -15,8 +15,7 @@ def findPoints():
 		}
 		
 		for ticker in stocks:
-			f = update(ticker)
-			#print(f)
+			f = updateIndicators(ticker)
 			
 			"""
 			stoploss = 1#((f['ADL_SMA_14'][-1]-f['ADL'][-2])*(f['High'][-1]-f['Low'][-1])+(f['High'][-1]+f['Low'][-1])*f['Volume'][-1])/(2*f['Volume'][-1])

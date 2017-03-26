@@ -4,14 +4,14 @@ import datetime
 import numpy as np
 import pandas as pd
 from pandas import DataFrame
-from readWriteData import readData
+from getSharesList import getSharesList
 import os	
 import xlrd
 import csv
 from urllib.request import urlopen
 
 def importRawDataFromExcel():
-	stocksToPull = readData('\\stocks\\excelStocks.txt')
+	stocksToPull = getSharesList('excelStocks.txt')
 	full_path = os.path.realpath(__file__)
 	stockFile = os.path.dirname(full_path) + '\Indicators\\' + 'AllIndicators.xlsm'
 	book = xlrd.open_workbook(stockFile)
@@ -120,5 +120,21 @@ def addUpdatedData(stock, df):
 		
 	except Exception as e:
 		print('Error in addUpdatedData: ',str(e))
+
 		
-		
+def updateIndicators(ticker):
+	error_stocks = []
+	try:
+		#df = importRawDataFromWeb(ticker)
+		#df = makeStandardDataFrameFromWeb(df)
+		df = importRawDataFromCSV(ticker+'.csv')
+		#df = addUpdatedData(ticker+'.ns', df)
+		#df = addIndicators(df)		
+		#print 'Updating ', ticker, '...'
+		#print df
+		return df
+
+	except Exception as e:
+		print('Error in UpdateIndicators: ' + str(e))
+		error_stocks.append(ticker)
+				

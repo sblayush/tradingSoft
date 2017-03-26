@@ -1,9 +1,12 @@
 from tornado.web import RequestHandler, Application, StaticFileHandler
 from runCommand import runCommand
+import logging.config
 import tornado.ioloop
 import json
 import os
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 dirPath = os.path.dirname(os.path.realpath(__file__))
 
 class MainHandler(RequestHandler):
@@ -16,6 +19,7 @@ class TestHandler(RequestHandler):
 			command = ""
 			argumentsList = []
 			responseMap = {}
+			logger.info("Found key : 'error message number' in node :" + utility.stripData(dict["error message number"]))
 			print("Got a request")
 			receiveDataMap = json.loads(self.request.body.decode('utf-8'))
 			if 'command' in receiveDataMap and 'argumentsList' in receiveDataMap:
