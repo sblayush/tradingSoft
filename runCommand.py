@@ -1,14 +1,17 @@
-from dailyUpdate import dailyUpdate
-from sortData import sortData
-from removeDuplicates import removeDuplicates
-from divideData import divideData
-from getStockData import getStockData
-from getSharesList import getMyPortfolioSharesList, getAllSharesList
+from updateFunctions import getMyPortfolioSharesList, getAllSharesList
 from saveMyPortfolioChanges import saveMyPortfolioChanges
-from findPoints import findPoints
 from getLastUpdatedDate import getLastUpdatedDate
-from saveProperties import saveProperties
+from removeDuplicates import removeDuplicates
 from saveAnnotations import saveAnnotations
+from saveProperties import saveProperties
+from getStockData import getStockData
+from dailyUpdate import dailyUpdate
+from divideData import divideData
+from findPoints import findPoints
+from sortData import sortData
+import logging
+
+logger = logging.getLogger(__name__)
 
 def runCommand(command, argumentsList):
 	try:
@@ -28,6 +31,7 @@ def runCommand(command, argumentsList):
 			}
 			
 		returnValue = commandMap[command](*argumentsList)
+		logger.info("Command " + command + "run successfully")
 		return returnValue
 	except Exception as e:
-		print ('Exception in runCommand:' +	str(e))
+		logger.error('Exception in runCommand:' + str(e))

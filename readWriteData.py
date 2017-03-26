@@ -1,4 +1,7 @@
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 def writeData(dataPath, data, shouldAppend=True):
 	try:
@@ -12,7 +15,7 @@ def writeData(dataPath, data, shouldAppend=True):
 		saveFile.close()
 		
 	except Exception as e:
-		print('Error in Write Data: ' + str(e))
+		logger.error('Error in Write Data: ' + str(e))
 	
 	
 def readData(dataPath):
@@ -25,7 +28,7 @@ def readData(dataPath):
 		return data
 		
 	except Exception as e:
-		print('Error in Read Data: ' + str(e))
+		logger.info('Error in Read Data: ' + str(e))
 		
 		
 if __name__ == "__main__":

@@ -1,5 +1,7 @@
-from getSharesList import getSharesList
-from updateFunctions import updateIndicators
+from updateFunctions import getSharesList, updateIndicators
+import logging
+
+logger = logging.getLogger(__name__)
 
 def findPoints():
 	try:
@@ -14,6 +16,7 @@ def findPoints():
 			'lowPoints' : []
 		}
 		
+		logger.info("Trying to find the indicator points")
 		for ticker in stocks:
 			f = updateIndicators(ticker)
 			
@@ -51,6 +54,6 @@ def findPoints():
 		return indicatorsObject
 		
 	except Exception as e:
-		print('Error in Finding Points: ' + str(e))
+		logger.error('Error in Finding Points: ' + str(e))
 
 #findPoints()	

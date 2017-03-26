@@ -1,5 +1,8 @@
 import datetime, os
 from updateFunctions import importRawDataFromCSV
+import logging
+
+logger = logging.getLogger(__name__)
 
 def removeDuplicates():
 	try:
@@ -13,12 +16,12 @@ def removeDuplicates():
 			stockFile = os.path.dirname(full_path) + '\Shares\\' + file
 			df.to_csv(stockFile, header = False)
 			successFiles.append(file)
-		print(successFiles)
+		logger.info("Removed duplicates for files: " + str(successFiles))
 		return "Remove duplicates successful"
 		
 	except Exception as e:
 		errorString = 'Error in removeDuplicates: ' + str(e)
-		print(errorString)
+		logger.error(errorString)
 		return errorString
 	
 if __name__ == "__main__":

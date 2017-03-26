@@ -1,7 +1,5 @@
-import os
-dir_path = os.path.dirname(os.path.realpath(__file__))
-fileList = os.listdir(dir_path+"\\Shares")
+from datetime import datetime, date
 
-with open(dir_path + '\\asdf.txt', 'a') as the_file:
-	for file in fileList:
-		the_file.write(file[:-4] + '\n')
+today = date.today()
+logger.info(today.strftime("%d_%m_%y"))
+

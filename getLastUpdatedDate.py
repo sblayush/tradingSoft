@@ -11,5 +11,5 @@ def getLastUpdatedDate():
 	return lastUpdatedDate
 	
 if __name__ == "__main__":
-	getLastUpdatedDate()
+	print(getLastUpdatedDate())
 	

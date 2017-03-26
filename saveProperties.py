@@ -9,7 +9,7 @@ def saveProperties(propertiesJSON):
 		return "Properties saved successfully"
 	except Exception as e:
 		errorString = "Error in saving properties:" + str(e)
-		print(errorString)
+		logger.error(errorString)
 		return errorString
 
 if __name__ == "__main__":
