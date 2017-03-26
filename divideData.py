@@ -2,6 +2,9 @@ import datetime, os
 from updateFunctions import importRawDataFromCSV
 import pandas as pd
 from pandas import DataFrame
+import logging
+
+logger = logging.getLogger(__name__)
 
 def divideData():
 	try:
@@ -9,7 +12,7 @@ def divideData():
 		try:
 			divideDate = datetime.datetime.strptime(i, '%d/%m/%y').strftime('%d-%b-%y')
 		except ValueError:
-			print("Incorrect format")
+			logger.error("Incorrect date format in divideData")
 		
 		file = str(raw_input('Input the share name: '))
 		full_path = os.path.realpath(__file__)
@@ -18,8 +21,8 @@ def divideData():
 			symbol = str(raw_input('Input the symbol:\n1.Add (+)\n2.Substract (-)\n3.Divide (/)\n4.Multiply (*)\nInput: '))
 			cf = {}
 			
-			print(divideDate)
-			print(df.index[0])
+			logger.info(divideDate)
+			logger.info(df.index[0])
 			if symbol == '+':
 				factor = float(str(raw_input('Input the factor to be added: ')))
 				cf['Open'] = df.loc[df.index[0]:divideDate]['Open']+factor
@@ -55,15 +58,16 @@ def divideData():
 			df.update(cf, join = 'left', overwrite = True)
 			
 		except Exception as e:
-			print('Invalid input!!' + str(e))
+			logger.error('Invalid input!!' + str(e))
 			
 		
 		stockFile = os.path.dirname(full_path) + '\Shares\\' + file + '.csv'
 		df.to_csv(stockFile, header = False)
 		
-		print('Operation Successful!')
+		logger.info('Divide data Successful!')
+		return 'Divide data Successful!'
 		
 	except Exception as e:
-		print('Error in divideData: ' + str(e))
+		logger.error('Error in divideData: ' + str(e))
 
 #divideData()

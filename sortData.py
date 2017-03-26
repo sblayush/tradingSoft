@@ -1,6 +1,9 @@
-import datetime, os
 from updateFunctions import importRawDataFromCSV
+import datetime, os
 import pandas as pd
+import logging
+
+logger = logging.getLogger(__name__)
 
 def sortData():
 	try:
@@ -16,14 +19,15 @@ def sortData():
 			stockFile = os.path.dirname(full_path) + '\Shares\\' + file
 			df.to_csv(stockFile, header = False)
 			successFiles.append(file)
-		print(successFiles)
+		logger.info(successFiles)
 		successString = 'Sorting data Successful!'
-		print(successString)
+		logger.info(successString)
 		return successString
 		
 	except Exception as e:
 		errorString = 'Error in sortData: ' + str(e)
-		print(errorString)
+		logger.error(errorString)
 		return errorString
 
-#sortData()
+if __name__ == "__main__":
+	print(sortData())

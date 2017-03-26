@@ -148,7 +148,6 @@ angular.module('viewStockApp', ['userDataModelApp'])
 		})
 		.then(function(response) {
 			updateGraph(shareName, response.data['success']);
-			//console.log(response.data['success'].slice((-1)*parseInt(vm.properties.datesRange)));
 			hidePreloader();
 		});
 	}
@@ -163,7 +162,7 @@ angular.module('viewStockApp', ['userDataModelApp'])
 		
 		var series = plot.candlestick(ohlcMapping).name(stockName);
 		series.legendItem().iconType('risingfalling');
-		
+		removeAllAnnotation();
 		annotation.fromJson(data['annotations']);
 		
 	}

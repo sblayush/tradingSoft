@@ -1,24 +1,43 @@
 import pandas_datareader.data as web
-import datetime
-#import talib
-import numpy as np
-import pandas as pd
+from urllib.request import urlopen
 from pandas import DataFrame
-from getSharesList import getSharesList
-import os	
+import pandas as pd
+import numpy as np
+import datetime
+import logging
 import xlrd
 import csv
-from urllib.request import urlopen
+import os
+#import talib
+
+dirPath = os.path.dirname(os.path.realpath(__file__))
+logger = logging.getLogger(__name__)
+
+
+def getSharesList(fileName):
+	stockFile = dirPath + "\\stocks\\" +fileName
+	with open(stockFile,'r') as shareFile:
+		stocks = shareFile.read()
+		stocks = stocks.split('\n')
+		stocks = stocks[:-1]
+	return stocks
+	
+def getAllSharesList():
+	allSharesList = getSharesList('allStocks.txt')
+	return allSharesList
+	
+def getMyPortfolioSharesList():
+	myPortfolioSharesList = getSharesList('myPortfolioStocks.txt')
+	return myPortfolioSharesList
 
 def importRawDataFromExcel():
 	stocksToPull = getSharesList('excelStocks.txt')
-	full_path = os.path.realpath(__file__)
-	stockFile = os.path.dirname(full_path) + '\Indicators\\' + 'AllIndicators.xlsm'
+	stockFile = dirPath + '\Indicators\\' + 'AllIndicators.xlsm'
 	book = xlrd.open_workbook(stockFile)
 
 	for ticker in stocksToPull:
 		try:
-			csvFile = os.path.dirname(full_path) + '\Indicators\\' + ticker +'.csv'
+			csvFile = dirPath + '\Indicators\\' + ticker +'.csv'
 			sheet = book.sheet_by_name(ticker)
 			your_csv_file = open(csvFile, 'wb')
 			wr = csv.writer(your_csv_file, quoting=csv.QUOTE_ALL)
@@ -37,11 +56,10 @@ def importRawDataFromExcel():
 					wr.writerow(oneRow)
 					count += 1
 		except Exception as e:
-			print('Cannot import data for:' + ticker)
+			logger.error('Cannot import data for:' + ticker)
 			
 def importRawDataFromCSV(ticker):
-	full_path = os.path.realpath(__file__)
-	stockFile = os.path.dirname(full_path) + '\Shares\\' + ticker
+	stockFile = dirPath + '\Shares\\' + ticker
 	df = pd.read_csv(stockFile, names = ['Date', 'Open', 'High', 'Low', 'Close', 'Volume'], header = None, index_col = 'Date')
 	return df
 	
@@ -51,7 +69,7 @@ def makeStandardDataFrameFromCSV(df):
 		df.drop('Turnover (Rs. Cr)', axis=1, inplace=True)
 		df.rename(columns={'Shares Traded': 'Volume'}, inplace=True)
 	except:
-		print('Already Updated...')
+		logger.error('Already Updated...')
 	df.index = pd.to_datetime(df.index, format='%d-%b-%y')
 	df.index.name = 'Date'
 	return df
@@ -87,8 +105,7 @@ def addIndicators(df):
 
 	
 def storeDataFrameToCSV(df, ticker):
-	full_path = os.path.realpath(__file__)
-	stockFile = os.path.dirname(full_path) + '\Indicators\\' + ticker + '.csv'
+	stockFile = dirPath + '\Indicators\\' + ticker + '.csv'
 	df.to_csv(stockFile)
 	
 def addUpdatedData(stock, df):
@@ -119,7 +136,7 @@ def addUpdatedData(stock, df):
 		return df
 		
 	except Exception as e:
-		print('Error in addUpdatedData: ',str(e))
+		logger.error('Error in addUpdatedData: ',str(e))
 
 		
 def updateIndicators(ticker):
@@ -130,11 +147,10 @@ def updateIndicators(ticker):
 		df = importRawDataFromCSV(ticker+'.csv')
 		#df = addUpdatedData(ticker+'.ns', df)
 		#df = addIndicators(df)		
-		#print 'Updating ', ticker, '...'
-		#print df
+		#logger.info 'Updating ', ticker, '...'
+		#logger.info df
 		return df
 
 	except Exception as e:
-		print('Error in UpdateIndicators: ' + str(e))
+		logger.error('Error in UpdateIndicators: ' + str(e))
 		error_stocks.append(ticker)
-				
