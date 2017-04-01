@@ -61,7 +61,7 @@ def divideData():
 			logger.error('Invalid input!!' + str(e))
 			
 		
-		stockFile = os.path.dirname(full_path) + '\Shares\\' + file + '.csv'
+		stockFile = os.path.dirname(full_path) + '/Shares/' + file + '.csv'
 		df.to_csv(stockFile, header = False)
 		
 		logger.info('Divide data Successful!')

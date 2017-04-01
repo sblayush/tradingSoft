@@ -5,8 +5,7 @@ angular.module('homePageApp', ['userDataModelApp'])
 	vm.myShares = userDataModel.myShares;
 	vm.allShares = userDataModel.allShares;
 	vm.commonMap = userDataModel.commonMap;
-	
-	var url = "http://localhost:8888/runCommand";
+	var url = userDataModel.properties.url;
 	
 	function getLastUpdatedDate(){
 		var data = {

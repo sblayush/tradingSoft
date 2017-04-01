@@ -3,7 +3,7 @@ import json, os
 def saveProperties(propertiesJSON):
 	try:
 		full_path = os.path.realpath(__file__)
-		filePath = os.path.dirname(full_path) + '\\UI\\propertiesFile.properties'
+		filePath = os.path.dirname(full_path) + '/UI/propertiesFile.properties'
 		with open(filePath, "w") as f:
 			json.dump(json.loads(propertiesJSON), f, indent = 4, ensure_ascii=False)
 		return "Properties saved successfully"

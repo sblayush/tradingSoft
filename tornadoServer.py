@@ -9,12 +9,13 @@ import os
 today = date.today()
 today = today.strftime("%d_%m_%y")
 dirPath = os.path.dirname(os.path.realpath(__file__))
-logging.basicConfig(filename = dirPath + "\\Logs\\" + today + ".log",
+logging.basicConfig(filename = dirPath + "/Logs/" + today + ".log",
 					filemode = 'w',
 					format = '%(asctime)s, %(name)s, %(levelname)s %(lineno)d : %(message)s',
 					datefmt = '%H:%M:%S',
 					level = logging.DEBUG)
 logger = logging.getLogger(__name__)
+logging.getLogger().addHandler(logging.StreamHandler())
 
 class MainHandler(RequestHandler):
 	def get(self, inputText):
@@ -62,6 +63,5 @@ if __name__ == "__main__":
 	app = make_app()
 	port = 8888
 	app.listen(port)
-	print("Server started at port: " + str(port) + "........")
 	logger.info("Server started at port: " + str(port) + "........")
 	tornado.ioloop.IOLoop.current().start()

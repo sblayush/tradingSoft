@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 def saveAnnotations(shareName, annotationsString):
 	full_path = os.path.realpath(__file__)
-	filePath = os.path.dirname(full_path) + '\\annotations\\' + shareName + '.txt'
+	filePath = os.path.dirname(full_path) + '/annotations/' + shareName + '.txt'
 	try:
 		with open(filePath, "w") as f:
 			json.dump(json.loads(annotationsString), f, indent = 4, ensure_ascii=False)

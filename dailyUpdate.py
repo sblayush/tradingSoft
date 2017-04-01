@@ -24,3 +24,6 @@ def dailyUpdate(inputDate):
 		return successString
 	except Exception as e:
 		logger.error('Exception in dailyUpdate:' + str(e))
+		
+if __name__ == "__main__":
+	dailyUpdate('25/03/2017')

@@ -16,7 +16,7 @@ def sortData():
 			df = df.reset_index()
 			df['Date'] = pd.to_datetime(df.Date)
 			df = df.sort(columns = 'Date').set_index('Date')
-			stockFile = os.path.dirname(full_path) + '\Shares\\' + file
+			stockFile = os.path.dirname(full_path) + '/Shares/' + file
 			df.to_csv(stockFile, header = False)
 			successFiles.append(file)
 		logger.info(successFiles)
