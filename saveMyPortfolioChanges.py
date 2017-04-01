@@ -5,7 +5,7 @@ logger = logging.getLogger(__name__)
 
 def saveMyPortfolioChanges(mySharesList):
 	try:
-		filePath = '\\stocks\\myPortfolioStocks.txt'
+		filePath = '/stocks/myPortfolioStocks.txt'
 		writeData(filePath, mySharesList[0]+'\n', shouldAppend=False)
 		for share in mySharesList[1:]:
 			writeData(filePath, share+'\n')

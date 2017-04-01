@@ -13,7 +13,7 @@ def removeDuplicates():
 		for file in l:
 			df = importRawDataFromCSV(file)
 			df = df.reset_index().drop_duplicates(subset='Date', keep = 'first').set_index('Date')
-			stockFile = os.path.dirname(full_path) + '\Shares\\' + file
+			stockFile = os.path.dirname(full_path) + '/Shares/' + file
 			df.to_csv(stockFile, header = False)
 			successFiles.append(file)
 		logger.info("Removed duplicates for files: " + str(successFiles))

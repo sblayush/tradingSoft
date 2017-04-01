@@ -32,4 +32,4 @@ def readData(dataPath):
 		
 		
 if __name__ == "__main__":
-	print(readData('\\stocks\\myPortfolioStocks.txt'))
+	print(readData('/stocks/myPortfolioStocks.txt'))

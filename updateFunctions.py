@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def getSharesList(fileName):
-	stockFile = dirPath + "\\stocks\\" +fileName
+	stockFile = dirPath + "/stocks/" +fileName
 	with open(stockFile,'r') as shareFile:
 		stocks = shareFile.read()
 		stocks = stocks.split('\n')
@@ -32,12 +32,12 @@ def getMyPortfolioSharesList():
 
 def importRawDataFromExcel():
 	stocksToPull = getSharesList('excelStocks.txt')
-	stockFile = dirPath + '\Indicators\\' + 'AllIndicators.xlsm'
+	stockFile = dirPath + '/Indicators/' + 'AllIndicators.xlsm'
 	book = xlrd.open_workbook(stockFile)
 
 	for ticker in stocksToPull:
 		try:
-			csvFile = dirPath + '\Indicators\\' + ticker +'.csv'
+			csvFile = dirPath + '/Indicators/' + ticker +'.csv'
 			sheet = book.sheet_by_name(ticker)
 			your_csv_file = open(csvFile, 'wb')
 			wr = csv.writer(your_csv_file, quoting=csv.QUOTE_ALL)
@@ -59,7 +59,7 @@ def importRawDataFromExcel():
 			logger.error('Cannot import data for:' + ticker)
 			
 def importRawDataFromCSV(ticker):
-	stockFile = dirPath + '\Shares\\' + ticker
+	stockFile = dirPath + '/Shares/' + ticker
 	df = pd.read_csv(stockFile, names = ['Date', 'Open', 'High', 'Low', 'Close', 'Volume'], header = None, index_col = 'Date')
 	return df
 	
@@ -105,7 +105,7 @@ def addIndicators(df):
 
 	
 def storeDataFrameToCSV(df, ticker):
-	stockFile = dirPath + '\Indicators\\' + ticker + '.csv'
+	stockFile = dirPath + '/Indicators/' + ticker + '.csv'
 	df.to_csv(stockFile)
 	
 def addUpdatedData(stock, df):

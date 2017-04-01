@@ -3,7 +3,7 @@ angular.module('propertiesPageApp', ['userDataModelApp'])
 	vm = $scope;
 	vm.properties = userDataModel.properties;
 	hidePreloader();
-	var url = "http://localhost:8888/runCommand";
+	var url = userDataModel.properties.url;
 	
 	vm.saveProperties = function(){
 		showPreloader();

@@ -5,9 +5,9 @@ angular.module('userDataModelApp', [])
 	var properties = {
 		EMArange : 14,
 		SMArange : 21,
-		datesRange : 100
+		datesRange : 100,
+		url : "http://localhost:8888/runCommand"
 	}
-	var url = "http://localhost:8888/runCommand";
 	
 	var commonMap = {
 		selectedShare : "none",

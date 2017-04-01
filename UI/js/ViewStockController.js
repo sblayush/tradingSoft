@@ -17,7 +17,7 @@ angular.module('viewStockApp', ['userDataModelApp'])
 		SMA: {'selected' : false, 'range' : vm.properties.SMArange}
 	}
 	
-	var url = "http://localhost:8888/runCommand";
+	var url = userDataModel.properties.url;
 	var $chartDiv = $('#chart-container');
 	var chart = anychart.stock();
 	var plot = chart.plot(0);
