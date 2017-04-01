@@ -16,7 +16,7 @@ def updateStocksCSV(Date):
 			file.write(Date.strftime('%d-%b-%y')+','+str(df['Open'][symbol])+','+str(df['High'][symbol])+','+str(df['Low'][symbol])+','+str(df['Close'][symbol])+','+str(df['Volume'][symbol])+'\n')
 			file.close()
 			
-		writeData('/Stocks/DatesUpadted.txt', Date.strftime('%d-%b-%y')+'\n')
+		writeData('/stocks/DatesUpadted.txt', Date.strftime('%d-%b-%y')+'\n')
 		logger.info('Successfully updated stocks for date: '+ Date.strftime('%d-%b-%y'))
 		
 	except Exception as e:
