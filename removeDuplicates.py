@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 def removeDuplicates():
 	try:
 		full_path = os.path.realpath(__file__)
-		direc = os.path.dirname(full_path) + '\Shares'
+		direc = os.path.dirname(full_path) + '/Shares'
 		l = os.listdir(direc)
 		successFiles = []
 		for file in l:
