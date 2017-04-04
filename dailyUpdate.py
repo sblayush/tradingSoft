@@ -1,4 +1,4 @@
-from datetime import timedelta, date, datetime
+from datetime import timedelta, datetime
 from updateStocksCSV import updateStocksCSV
 import logging
 
@@ -11,6 +11,7 @@ def dateRange(start_date, end_date):
 def dailyUpdate(inputDate):
 	try:
 		start_date = datetime.strptime(inputDate, '%d/%m/%Y')
+		start_date += timedelta(days=1)
 	except ValueError:
 		logger.error("Incorrect date format")
 	logger.info("Got date: " + inputDate)
