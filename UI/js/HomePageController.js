@@ -33,7 +33,7 @@ angular.module('homePageApp', ['userDataModelApp'])
 		var date = new Date(vm.commonMap.lastUpdatedDate);
 		var yyyy = date.getFullYear();
 		var mm = date.getMonth() < 9 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
-		var dd  = (date.getDate() + 1) < 10 ? "0" + (date.getDate() + 1) : (date.getDate() + 1);
+		var dd  = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
 		
 		var date = dd + '/' + mm + '/' + yyyy;
 		var data = {
