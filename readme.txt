@@ -1,3 +1,7 @@
+
+tradingSoft
+-----------
+
 A simple web applcation to view the stock market charts. I have made use of the anyChart api to plot interactive charts using angularJS. In the backend there is a python server running tornado server. The charts are interactive as one can draw on them and interact accordingly.
 
 SO FAR:
