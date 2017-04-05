@@ -16,4 +16,5 @@ TODO:
 2. Add login page for different users.
 3. Add intraday data.
 4. Add more indicators.
-5. Add provision for modifying the stock data in case of splits/dividents
+5. Add provision for modifying the stock data in case of splits/dividents.
+6. Increse security, ie, not all files sjhould be accessible from outside.
